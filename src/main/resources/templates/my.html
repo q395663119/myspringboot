@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--需要引用一下命名空间,xmlns:th="http://www.thymeleaf.org"-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf页面</title>
+</head>
+<body>
+<!--用法和jstl一致，获取model中携带的参数-->
+<!--Thymeleaf 是新一代的Java模板引擎，它的语法对前端开发者友好可直接打开编辑，
+Spring Boot也建议使用它作为你的模板引擎，本文将演示如何使用它提供的API来渲染模板生成静态页面。-->
+<table>
+    <thead>
+    <tr>
+        <th>名字</th>
+        <th>年龄</th>
+        <th>性别</th>
+    </tr>
+   <tr th:each="get:${my}">
+       <!-- <td>${get.age}</td> get不一定就是定义的,是可以随便取的a都可以-->
+       <!-- 1. th:text  用来将内容输出到所在标签的body中。
+                 2. #{home.welcome} 用来引入数据home对象中的 welcome属性。
+                 3. 可以用th:utext 用来显示“unescaped ” 的html内容。-->
+       <td th:text="${get.name}">庄三</td>
+       <td th:text="${get.age}">100</td>
+       <td th:text="${get.gender}">女</td>
+   </tr>
+
+    <!--动态替换,填充数据
+    怎么看好处当后没有给你数据就是现实死数据,一旦就是你给会一个活的数据,后面是前段庄三,100 女就是你
+    前段给你写的死数据,用来测试用的,1.就是当后天没有数据,就是现实,就是用来测试看,
+    2.当时就是后台就是有数据,就是显示后台显示数据,就是会覆盖,原先用来的测试的数据,也不用删除,后台也不用改,
+    就是简解-->
+
+    </thead>
+</table>
+
+<hr>
+<div th:text="${name}"></div>
+
+
+
+
+
+
+</body>
+</html>
